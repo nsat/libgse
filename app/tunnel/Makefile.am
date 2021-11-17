@@ -15,6 +15,7 @@ INCLUDES = \
 
 AM_LDFLAGS = \
 	-L$(top_srcdir)/src/ \
+	-lz \
 	-lpthread
 
 gsetunnel_SOURCES = tunnel.c

@@ -15,6 +15,7 @@ INCLUDES = \
 
 AM_LDFLAGS = \
 	-L$(top_srcdir)/src/ \
+	-lz \
 	-lpthread
 
 eval_gse_trunk_SOURCES = eval_gse_trunk.c
