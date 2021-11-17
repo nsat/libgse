@@ -34,6 +34,8 @@ AC_CHECK_FUNCS([malloc calloc free memcpy memcmp bzero pthread_mutex_lock pthrea
 # check for pkg-config
 PKG_PROG_PKG_CONFIG
 
+# zlib
+AX_CHECK_ZLIB()
 
 # allow users to specify a special location for libpcap includes
 AC_ARG_WITH(libpcap_includes,
@@ -156,4 +158,3 @@ AC_CONFIG_FILES([Makefile \
                  ])
 
 AC_OUTPUT
-
