@@ -20,8 +20,10 @@ AM_LDFLAGS = \
 
 eval_gse_trunk_SOURCES = eval_gse_trunk.c
 eval_gse_trunk_LDADD = \
-	$(top_builddir)/src/libgse.la
+	$(top_builddir)/src/libgse.la \
+	-lz
 
 eval_gse_no_alloc_SOURCES = eval_gse_no_alloc.c
 eval_gse_no_alloc_LDADD = \
-	$(top_builddir)/src/libgse.la
+	$(top_builddir)/src/libgse.la \
+	-lz

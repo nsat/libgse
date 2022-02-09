@@ -21,9 +21,11 @@ AM_LDFLAGS = \
 gsetunnel_SOURCES = tunnel.c
 gsetunnel_LDADD = \
 	$(top_builddir)/src/libgse.la \
-	-lpcap
+	-lpcap \
+	-lz
 
 gsetunnel_thread_SOURCES = tunnel_thread.c
 gsetunnel_thread_LDADD = \
 	$(top_builddir)/src/libgse.la \
-	-lpcap
+	-lpcap \
+	-lz
