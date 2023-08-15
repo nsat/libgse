@@ -53,7 +53,6 @@
 #include <arpa/inet.h>
 
 #include "constants.h"
-#include "fifo.h"
 #include "crc.h"
 #include "header_fields.h"
 

@@ -54,6 +54,7 @@
 
 #include "virtual_fragment.h"
 #include "encap_header_ext.h"
+#include "fifo.h"
 
 /** Encapsulation structure
  *
