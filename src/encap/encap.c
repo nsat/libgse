@@ -64,31 +64,6 @@
  *
  ****************************************************************************/
 
-/** Encapsulation structure
- *
- *  If library is used with zero copy, the header and trailer offsets are not
- *  used.\n
- *  With zero copy, the header offsets depend on the offset specified on
- *  fragment creation and on the fragment type.\n
- *  Trailer offset usage on GSE packets is not possible with zero-copy else
- *  data could be overwritten.
- */
-struct gse_encap_s
-{
-  fifo_t *fifo;          /**< Table of FIFOs
-                              The size of the table is given by qos_nbr */
-  size_t head_offset;    /**< Offset applied on the beginning of each copied
-                              GSE packet (in bytes)
-                              (default: GSE_MAX_REFRAG_HEAD_OFFSET) */
-  size_t trail_offset;   /**< Offset applied on the end of each copied
-                              GSE packet (in bytes)
-                              (default: 0) */
-  uint8_t qos_nbr;       /**< Number of QoS values */
-  /**> Callback to build header extensions */
-  gse_encap_build_header_ext_cb_t build_header_ext;
-  void *opaque;          /**< User specific data for extension callback */
-};
-
 /** Encapsulation mode
  *
  * Choose how to get the encapsulated packet:
@@ -839,7 +814,7 @@ static gse_status_t gse_encap_get_packet_common(int mode, gse_vfrag_t **packet,
    * GSE packet is a first fragment - for the CRC at the end of the PDU data */
   if(payload_type == GSE_PDU_FIRST_FRAG)
   {
-    /* TODO reallocate if not enough space due to extensions instead of 
+    /* TODO reallocate if not enough space due to extensions instead of
      *      an error ? */
     status = gse_shift_vfrag(encap_ctx->vfrag, header_length * -1,
                              GSE_MAX_TRAILER_LENGTH);

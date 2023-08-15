@@ -55,7 +55,31 @@
 #include "virtual_fragment.h"
 #include "encap_header_ext.h"
 
-struct gse_encap_s;
+/** Encapsulation structure
+ *
+ *  If library is used with zero copy, the header and trailer offsets are not
+ *  used.\n
+ *  With zero copy, the header offsets depend on the offset specified on
+ *  fragment creation and on the fragment type.\n
+ *  Trailer offset usage on GSE packets is not possible with zero-copy else
+ *  data could be overwritten.
+ */
+struct gse_encap_s
+{
+  fifo_t *fifo;          /**< Table of FIFOs
+                              The size of the table is given by qos_nbr */
+  size_t head_offset;    /**< Offset applied on the beginning of each copied
+                              GSE packet (in bytes)
+                              (default: GSE_MAX_REFRAG_HEAD_OFFSET) */
+  size_t trail_offset;   /**< Offset applied on the end of each copied
+                              GSE packet (in bytes)
+                              (default: 0) */
+  uint8_t qos_nbr;       /**< Number of QoS values */
+  /**> Callback to build header extensions */
+  gse_encap_build_header_ext_cb_t build_header_ext;
+  void *opaque;          /**< User specific data for extension callback */
+};
+
 /** Encapsulation structure type definition */
 typedef struct gse_encap_s gse_encap_t;
 
