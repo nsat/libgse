@@ -27,6 +27,7 @@ libgse_include_HEADERS = \
 	common/virtual_fragment.h \
 	common/header_fields.h \
 	encap/encap.h \
+	encap/fifo.h \
 	encap/refrag.h \
 	encap/encap_header_ext.h \
 	deencap/deencap.h \
