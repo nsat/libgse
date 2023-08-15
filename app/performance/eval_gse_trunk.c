@@ -62,7 +62,7 @@
 #define PROTOCOL_TYPE 0x0800
 #define QOS_VALUE 0
 
-#define GSE_MIN_PACKET_LENGTH 12
+#define GSE_MIN_PACKET_LENGTH_FIX 12
 #define GSE_MAX_PACKET_LENGTH (4095 + 2)
 
 unsigned char ip_payload[IP_PAYLOAD_LENGTH];
@@ -173,7 +173,7 @@ int main(void)
 			memcpy(bbframe + BBFRAME_LENGTH - size, gse_packet, vfrag_length);
 
 			size -= vfrag_length;
-			if (size <= GSE_MIN_PACKET_LENGTH)
+			if (size <= GSE_MIN_PACKET_LENGTH_FIX)
 				// BBFrame full, start new one
 				size = BBFRAME_LENGTH;
 
