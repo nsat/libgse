@@ -54,7 +54,6 @@
 
 #include "virtual_fragment.h"
 #include "encap_header_ext.h"
-#include "fifo.h"
 
 /** Encapsulation structure
  *
@@ -65,6 +64,7 @@
  *  Trailer offset usage on GSE packets is not possible with zero-copy else
  *  data could be overwritten.
  */
+typedef struct fifo_t;
 struct gse_encap_s
 {
   fifo_t *fifo;          /**< Table of FIFOs

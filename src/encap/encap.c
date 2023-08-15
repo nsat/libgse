@@ -54,6 +54,7 @@
 
 #include "constants.h"
 #include "crc.h"
+#include "fifo.h"
 #include "header_fields.h"
 
 
